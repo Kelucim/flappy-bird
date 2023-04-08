@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://ypfp42sjxkdr"]
+
+[ext_resource type="Script" path="res://UI/ui.gd" id="1_nbrr2"]
+[ext_resource type="FontFile" uid="uid://dv0p8onq1o5g3" path="res://slkscr.ttf" id="2_7nhbm"]
+[ext_resource type="PackedScene" uid="uid://rqxk3vdjvbpu" path="res://Parallax/parallax.tscn" id="2_uxq3f"]
+[ext_resource type="PackedScene" uid="uid://cxie4wkwf3upp" path="res://Parallax/BCKG/Buildings.tscn" id="3_kka7m"]
+[ext_resource type="PackedScene" uid="uid://ckwpsboquy12d" path="res://Parallax/BCKG/Sky.tscn" id="4_wsi04"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_ysipe"]
+action = &"jump_input"
+
+[sub_resource type="Shortcut" id="Shortcut_uoumr"]
+events = [SubResource("InputEventAction_ysipe")]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_nbrr2")
+
+[node name="Name" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.194
+anchor_right = 1.0
+anchor_bottom = 0.411
+offset_top = 0.112
+offset_bottom = 0.128052
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_7nhbm")
+theme_override_font_sizes/font_size = 90
+text = "Flappy Bird"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -93.0
+offset_top = 78.0
+offset_right = 93.0
+offset_bottom = 312.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 120
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScore" type="Label" parent="."]
+offset_left = 13.0
+offset_right = 510.0
+offset_bottom = 89.0
+theme_override_font_sizes/font_size = 32
+text = "High score: 0"
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.69
+anchor_right = 0.5
+anchor_bottom = 0.69
+offset_left = -126.0
+offset_top = -72.92
+offset_right = 127.0
+offset_bottom = 73.08
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 92
+shortcut = SubResource("Shortcut_uoumr")
+text = "Start"
+
+[node name="Parallax" parent="." instance=ExtResource("2_uxq3f")]
+
+[node name="Sky" parent="." instance=ExtResource("4_wsi04")]
+
+[node name="Buildings" parent="." instance=ExtResource("3_kka7m")]
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

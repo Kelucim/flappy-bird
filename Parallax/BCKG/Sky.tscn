@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckwpsboquy12d"]
+
+[ext_resource type="Texture2D" uid="uid://bdi26k51fl58h" path="res://Parallax/BCKG/clouds.png" id="1_05xcv"]
+[ext_resource type="Texture2D" uid="uid://dhbdkyxwruq7" path="res://Parallax/BCKG/MicrosoftTeams-image (1).png" id="2_3q0b5"]
+
+[node name="Sky" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_offset = Vector2(150, 0)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Dot" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(317, 656)
+scale = Vector2(1726, 1726)
+texture = ExtResource("2_3q0b5")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture_filter = 1
+position = Vector2(324, 356)
+scale = Vector2(5, 5)
+texture = ExtResource("1_05xcv")

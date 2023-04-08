@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds3xjr75aol2g"]
+
+[ext_resource type="PackedScene" uid="uid://dn55knj4cxlct" path="res://Pipes/Pipe/pipe.tscn" id="1_3ii8l"]
+
+[sub_resource type="GDScript" id="GDScript_g8nox"]
+script/source = "extends Node2D
+
+@export var pipe_speed = 400
+var goin = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	var velocity = Vector2.ZERO
+	
+	velocity = Vector2(pipe_speed, 0) 
+	
+	if goin:
+		position -= velocity * delta
+	
+	if position.x < -256:
+		queue_free()
+	
+func _goin_toggle():
+	goin = !goin
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7h6a0"]
+size = Vector2(20, 320)
+
+[node name="Pipes" type="Node2D" groups=["Pipes"]]
+script = SubResource("GDScript_g8nox")
+pipe_speed = 350
+metadata/_edit_group_ = true
+
+[node name="Pipe" parent="." instance=ExtResource("1_3ii8l")]
+position = Vector2(0, 800)
+
+[node name="Pipe2" parent="." instance=ExtResource("1_3ii8l")]
+position = Vector2(0, -800)
+rotation = 3.14159
+
+[node name="Score+" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score+"]
+shape = SubResource("RectangleShape2D_7h6a0")

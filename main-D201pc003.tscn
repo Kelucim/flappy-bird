@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnld5mitygwra"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_afx4u"]
+[ext_resource type="PackedScene" uid="uid://ckxwcypsryvqh" path="res://Bird/player.tscn" id="1_pcr4y"]
+[ext_resource type="PackedScene" uid="uid://ypfp42sjxkdr" path="res://UI/ui.tscn" id="2_2ge20"]
+[ext_resource type="PackedScene" uid="uid://ds3xjr75aol2g" path="res://Pipes/pipes.tscn" id="2_bato4"]
+[ext_resource type="PackedScene" uid="uid://d0of85ea4f0t" path="res://ground.tscn" id="5_42kn8"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_afx4u")
+pipe_scene = ExtResource("2_bato4")
+
+[node name="Player" parent="." instance=ExtResource("1_pcr4y")]
+
+[node name="UI" parent="." instance=ExtResource("2_2ge20")]
+
+[node name="PlayerStart" type="Marker2D" parent="."]
+position = Vector2(324, 550)
+
+[node name="PipeSpawner" type="Marker2D" parent="."]
+position = Vector2(920, 550)
+
+[node name="PipeTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="WaitToReset" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="Ground" parent="." instance=ExtResource("5_42kn8")]
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="new_score" from="Player" to="." method="_on_player_new_score"]
+[connection signal="start_game" from="UI" to="." method="_on_ui_start_game"]
+[connection signal="timeout" from="PipeTimer" to="." method="_on_pipe_timer_timeout"]

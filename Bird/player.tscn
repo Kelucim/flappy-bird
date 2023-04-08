@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckxwcypsryvqh"]
+
+[ext_resource type="Script" path="res://Bird/player.gd" id="1_ohxpa"]
+[ext_resource type="Texture2D" uid="uid://hcpki53icoxs" path="res://Bird/Bird1.png" id="1_ptupk"]
+[ext_resource type="Texture2D" uid="uid://bt1nmf1b567k1" path="res://Bird/Bird2.png" id="2_imj65"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t1pry"]
+radius = 9.0
+height = 24.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4t4uu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ptupk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_imj65")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Player" type="RigidBody2D"]
+gravity_scale = 4.0
+lock_rotation = true
+script = ExtResource("1_ohxpa")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 0)
+rotation = 1.5708
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_t1pry")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_4t4uu")
+frame = 1
+frame_progress = 0.745145
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="ScoreCollision" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 0)
+rotation = 1.5708
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_t1pry")
+
+[node name="Death" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="DeathCollision" type="CollisionShape2D" parent="Death"]
+position = Vector2(-3, 0)
+rotation = 1.5708
+scale = Vector2(5, 5)
+shape = SubResource("CapsuleShape2D_t1pry")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Death" to="." method="_on_death_area_entered"]
