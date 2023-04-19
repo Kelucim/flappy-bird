@@ -11,7 +11,6 @@ script = ExtResource("1_afx4u")
 pipe_scene = ExtResource("2_bato4")
 
 [node name="Player" parent="." instance=ExtResource("1_pcr4y")]
-jump_height = -1000
 
 [node name="UI" parent="." instance=ExtResource("2_2ge20")]
 
