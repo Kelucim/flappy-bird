@@ -13,13 +13,8 @@ func _ready():
 func _process(_delta):	
 	if position.y <= -300 && can_jump:
 		_player_died()
-
-#	if linear_velocity.y > 0 && can_rotate:
-#		var tween = get_tree().create_tween().set_parallel(true)
-#
-#		tween.tween_property($AnimatedSprite2D, "rotation_degrees", 30, 1)
-#		tween.tween_property($Death, "rotation_degrees", 30, 1)
-		
+	
+	print_debug(Engine.get_frames_per_second())
 	
 func _on_area_2d_area_entered(_area):
 	new_score.emit()
@@ -41,25 +36,12 @@ func _player_died():
 	can_jump = false
 	
 	linear_velocity.y = -500	
-	
-	$Timer.start()
-	await $Timer.timeout
-	$Timer.start()
-	await $Timer.timeout
-	$Timer.start()
-	await $Timer.timeout
-	
-	var reset_tween = get_tree().create_tween().set_parallel(true)
-	
-	reset_tween.tween_property($AnimatedSprite2D, "rotation_degrees", 0, 0.2).set_ease(Tween.EASE_OUT)
-	reset_tween.tween_property($Death, "rotation_degrees", 0, 0.2).set_ease(Tween.EASE_OUT)
-	
 
 func _input(event):
 	if Input.is_action_just_pressed("jump_input") && can_jump:
 		_jump()
 		
-	if event is InputEventScreenTouch && can_jump:
+	if event is InputEventScreenTouch:
 		if event.is_pressed() && can_jump:
 			_jump()
 
@@ -78,3 +60,9 @@ func _jump():
 		
 	tween_2.tween_property($AnimatedSprite2D, "rotation_degrees", 30, 0.6).set_ease(Tween.EASE_IN)
 	tween_2.tween_property($Death, "rotation_degrees", 30, 0.6).set_ease(Tween.EASE_IN)
+
+func _reset_rotation():
+	var reset_tween = get_tree().create_tween().set_parallel(true)
+	
+	reset_tween.tween_property($AnimatedSprite2D, "rotation_degrees", 0, 0.001)
+	reset_tween.tween_property($Death, "rotation_degrees", 0, 0.001)

@@ -32,6 +32,7 @@ func _on_player_died():
 	get_tree().call_group("Pipes", "queue_free")
 	$UI._reset()
 	$Player.position = $PlayerStart.position
+	$Player._reset_rotation()
 	$Player.freeze = true
 	
 func _save_high_score():

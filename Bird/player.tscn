@@ -24,6 +24,7 @@ animations = [{
 
 [node name="Player" type="RigidBody2D"]
 gravity_scale = 4.0
+can_sleep = false
 lock_rotation = true
 script = ExtResource("1_ohxpa")
 metadata/_edit_group_ = true
