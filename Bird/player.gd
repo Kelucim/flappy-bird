@@ -13,7 +13,7 @@ func _ready():
 func _process(_delta):	
 	if position.y <= -300 && can_jump:
 		_player_died()
-	print_debug(rotation_degrees)
+
 	if linear_velocity.y > 0 && can_rotate:
 		var tween = get_tree().create_tween().set_parallel(true)
 		
