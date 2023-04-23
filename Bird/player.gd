@@ -6,6 +6,7 @@ signal died
 
 var can_rotate = false
 var can_jump = false
+var is_falling = false
 
 func _ready():
 	$AnimatedSprite2D.play("default")
@@ -14,11 +15,13 @@ func _process(_delta):
 	if position.y <= -300 && can_jump:
 		_player_died()
 	
-	if linear_velocity.y > 0:
+	if linear_velocity.y > 0 && !is_falling:
 		var tween_2 = get_tree().create_tween().set_parallel(true)
 
-		tween_2.tween_property($AnimatedSprite2D, "rotation_degrees", 30, 0.8).set_ease(Tween.EASE_IN)
-		tween_2.tween_property($Death, "rotation_degrees", 30, 0.8).set_ease(Tween.EASE_IN)
+		tween_2.tween_property($AnimatedSprite2D, "rotation_degrees", 30, 0.6).set_ease(Tween.EASE_IN)
+		tween_2.tween_property($Death, "rotation_degrees", 30, 0.6).set_ease(Tween.EASE_IN)
+		
+		is_falling = true
 	
 func _on_area_2d_area_entered(_area):
 	new_score.emit()
@@ -50,6 +53,8 @@ func _input(event):
 
 func _jump():
 	linear_velocity.y = jump_height
+
+	is_falling = false
 
 	var tween = get_tree().create_tween().set_parallel(true)
 
