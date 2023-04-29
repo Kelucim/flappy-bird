@@ -7,17 +7,15 @@ script/source = "extends Node2D
 
 @export var pipe_speed = 400
 var goin = true
+var velocity
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+
+	velocity = Vector2(pipe_speed, 0) 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
-	var velocity = Vector2.ZERO
-	
-	velocity = Vector2(pipe_speed, 0) 
 	
 	if goin:
 		position -= velocity * delta
@@ -43,10 +41,12 @@ position = Vector2(0, 800)
 [node name="Pipe2" parent="." instance=ExtResource("1_3ii8l")]
 position = Vector2(0, -800)
 rotation = 3.14159
+scale = Vector2(-1, 1)
 
 [node name="Score+" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Score+"]
 shape = SubResource("RectangleShape2D_7h6a0")

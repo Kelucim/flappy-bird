@@ -28,7 +28,6 @@ func _on_player_died():
 	$UI._lost()
 	$WaitToReset.start()
 	await $WaitToReset.timeout
-	$WaitToReset.stop()
 	get_tree().call_group("Pipes", "queue_free")
 	$UI._reset()
 	$Player.position = $PlayerStart.position
