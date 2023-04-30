@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhbdkyxwruq7"
-path="res://.godot/imported/MicrosoftTeams-image (1).png-e46e857dadd7032ee82114b543b71929.ctex"
+uid="uid://c20hronpluwg2"
+path="res://.godot/imported/SkyBCKG.png-f551d15a6688e990170f055fd0233f4a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Parallax/BCKG/MicrosoftTeams-image (1).png"
-dest_files=["res://.godot/imported/MicrosoftTeams-image (1).png-e46e857dadd7032ee82114b543b71929.ctex"]
+source_file="res://Parallax/SkyBCKG.png"
+dest_files=["res://.godot/imported/SkyBCKG.png-f551d15a6688e990170f055fd0233f4a.ctex"]
 
 [params]
 

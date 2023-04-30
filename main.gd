@@ -24,12 +24,16 @@ func _on_pipe_timer_timeout():
 	
 func _on_player_died():
 	$PipeTimer.stop()
+	$ParallaxBackground.he_dead = true
+	$ParallaxForground.he_dead = true
 	get_tree().call_group("Pipes", "_goin_toggle")
 	$UI._lost()
 	$WaitToReset.start()
 	await $WaitToReset.timeout
 	get_tree().call_group("Pipes", "queue_free")
 	$UI._reset()
+	$ParallaxBackground.he_dead = false
+	$ParallaxForground.he_dead = false
 	$Player.position = $PlayerStart.position
 	$Player._reset_rotation()
 	$Player.freeze = true

@@ -10,12 +10,6 @@ func _ready():
 	_load()
 	score = 0
 
-func _process(delta):
-	if not_dead:
-		$Parallax.scroll_offset.x -= 360 * delta
-		$Sky.scroll_offset.x -= 150 * delta
-		$Buildings.scroll_offset.x -= 200 * delta
-
 func _update_score():
 	score += 1
 	$Score.text = str(score)

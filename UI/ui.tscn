@@ -1,10 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ypfp42sjxkdr"]
+[gd_scene load_steps=5 format=3 uid="uid://ypfp42sjxkdr"]
 
 [ext_resource type="Script" path="res://UI/ui.gd" id="1_nbrr2"]
 [ext_resource type="FontFile" uid="uid://dv0p8onq1o5g3" path="res://slkscr.ttf" id="2_7nhbm"]
-[ext_resource type="PackedScene" uid="uid://rqxk3vdjvbpu" path="res://Parallax/parallax.tscn" id="2_uxq3f"]
-[ext_resource type="PackedScene" uid="uid://cxie4wkwf3upp" path="res://Parallax/BCKG/Buildings.tscn" id="3_kka7m"]
-[ext_resource type="PackedScene" uid="uid://ckwpsboquy12d" path="res://Parallax/BCKG/Sky.tscn" id="4_wsi04"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_ysipe"]
 action = &"jump_input"
@@ -66,11 +63,5 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 92
 shortcut = SubResource("Shortcut_uoumr")
 text = "Start"
-
-[node name="Parallax" parent="." instance=ExtResource("2_uxq3f")]
-
-[node name="Sky" parent="." instance=ExtResource("4_wsi04")]
-
-[node name="Buildings" parent="." instance=ExtResource("3_kka7m")]
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

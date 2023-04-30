@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0iptjt5cbxtq"]
+
+[ext_resource type="Script" path="res://Parallax/ParallaxBackground.gd" id="1_n8p2y"]
+[ext_resource type="Texture2D" uid="uid://c20hronpluwg2" path="res://Parallax/SkyBCKG.png" id="2_tedna"]
+[ext_resource type="Texture2D" uid="uid://c6jhwpa7ictrj" path="res://Parallax/clouds.png" id="3_e8dh6"]
+[ext_resource type="Texture2D" uid="uid://dmje75j5u67rn" path="res://Parallax/buildings.png" id="4_vrpop"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+script = ExtResource("1_n8p2y")
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.42, 0.42)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Dot" type="Sprite2D" parent="Sky"]
+position = Vector2(317, 656)
+scale = Vector2(1726, 1726)
+texture = ExtResource("2_tedna")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture_filter = 1
+position = Vector2(324, 356)
+scale = Vector2(5, 5)
+texture = ExtResource("3_e8dh6")
+
+[node name="Buildings" type="ParallaxLayer" parent="."]
+position = Vector2(-40, 597)
+motion_scale = Vector2(0.66, 0.66)
+motion_mirroring = Vector2(1440, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Buildings"]
+texture_filter = 1
+position = Vector2(324, 356)
+scale = Vector2(5.8, 5.8)
+texture = ExtResource("4_vrpop")
